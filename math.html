@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="math.css">
+</head>
+
+<body>
+
+  <script>
+  var nums = [1, 3, 3, 4, 5, 8];
+  function getNumbers() {
+    document.getElementById("demo").innerHTML = nums.toString();
+  }
+  function getAverage() {
+    var sum = 0;
+    for(var i = 0; i < nums.length; i++) {
+      sum = sum + nums[i];
+    }
+    document.getElementById("demo").innerHTML =  sum / nums.length;
+  }
+  function getMode() {
+    var mode = 0;
+    var max = 0;
+    for(var i = 0; i < nums.length - 1; i++) {
+      var count = 0;
+      for(var j = i + 1; j < nums.length; j++) {
+        if(nums[i] == nums[j]) {
+          count++;
+        }
+      }
+      if(count > max) {
+        max = count;
+        mode = nums[i];
+      }
+    }
+    document.getElementById("demo").innerHTML =  mode;
+  }
+  function getMedian() {
+    nums.sort();
+    document.getElementById("demo").innerHTML = Math.floor(nums.length/2);
+    if(nums.length % 2 == 1) {
+      document.getElementById("demo").innerHTML =  nums[Math.floor(nums.length / 2)];
+    }
+    if(nums.length % 2 == 0) {
+      document.getElementById("demo").innerHTML =  (nums[Math.floor(nums.length/2)] + nums[Math.floor(nums.length/2 - 1)])/2;
+    }
+  }
+ </script>
+
+    <div id = "bodyDiv">
+      <p><b>Math</b></p>
+      <center><button type = "button" onclick="getNumbers()">Numbers</button><br/><br/></center>
+      <center><button type = "button" onclick="getAverage()">Average</button><br/><br/></center>
+      <center><button type = "button" onclick="getMode()">Mode</button><br/><br/></center>
+      <center><button type = "button" onclick="getMedian()">Median</button><br/><br/></center>
+      <div id = "outputDiv">
+        <br/><br/>
+          <p id="demo"></p>
+     </div>
+     <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+     <div class = "buttonDiv"><a href="index.html">Home</a></div>
+  </div>
+
+</body>
+
+</html>
